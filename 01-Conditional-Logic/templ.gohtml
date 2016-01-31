@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Composition</title>
+    <title>A Paradise City</title>
 </head>
 <body>
 
-  <h1>{{.Name}}</h1>
-  <h2>{{.Age}}</h2>
+  <h1>{{.Name}}</h1> <!--Output name-->
+  <h2>{{.Age}}</h2> <!--Output age-->
 
-  {{if .TakeMeHome}}
+  {{if .TakeMeHome}} <!--If TakeMeHome is 'true', then output the chorus-->
     <h3>Take me down to the paradise city where the grass is green and the girls are pretty.</h3>
-  {{else}}
+  {{else}} <!--If TakeMeHome is 'false', then it's not your time-->
     <h3>Sorry dude, it's not your time.</h3>
   {{end}}
+  
 </body>
 </html>
