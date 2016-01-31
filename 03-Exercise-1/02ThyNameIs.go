@@ -1,5 +1,12 @@
+// Brian Padilla
+// 1/31/16
+// Simple name output program
+
 package main
+
 import "fmt"
+
 func main() {
-    fmt.Println("Hello, thy name is Brian!")
+	name := "Brian"
+	fmt.Println("Hello", name)
 }
