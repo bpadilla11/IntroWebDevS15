@@ -5,30 +5,25 @@
 
 package main
 
-import (
+import(
   "fmt"
-  "net/http"
-  "os"
-  "log"
-  "text/template"
+	"log"
+	"html/template"
+	"net/http"
 )
 
-func photoBlog(res http.ResponseWriter, req *http.Request)  {
-
-	templ, err := template.ParseFiles("index.html") // Parse template file
-	if err != nil {
+func projectWebpage(res http.ResponseWriter, req *http.Request) {
+	tpl, err := template.ParseFiles("index.html")
+	if err != nil{
 		log.Fatalln(err)
 	}
-
-	err = templ.Execute(os.Stdout, nil)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	tpl.Execute(res, nil)
 }
 
 func main() {
-  http.HandleFunc("/", photoBlog)
+  // set the path URL
+	http.HandleFunc("/", projectWebpage)
 
-  fmt.Println("server is now running...") // display when server is running
-  http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
+	fmt.Println("server is now running...") // display when server is running
+	http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
 }
