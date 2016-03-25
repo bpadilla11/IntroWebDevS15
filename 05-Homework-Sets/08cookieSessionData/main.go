@@ -46,7 +46,7 @@ func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 		newValue := req.FormValue("cookieType") // get user name and age from the index.html file
     userCookie := getData(newValue) // encrypt the user input
 		tempValue := strings.Split(cookie.Value," | ") // split the session id and newValue
-		cookie.Value = tempValue[0] + " | " + userCookie // keep current session id from tempValue, but update user name and age
+		cookie.Value = tempValue[0] + " | " + userCookie // keep current session id from tempValue, but update user input
 		tempValue = nil // not necessary, but thought the tempValue array should be cleared of the id
 		http.SetCookie(res, cookie) // set the updated cookie
 		fmt.Println("Updated cookie!") // debug message for updated cookie
