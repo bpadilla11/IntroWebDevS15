@@ -15,6 +15,7 @@ import (
   "net/http"
 )
 
+// function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
   // for simplicity, the webpage is generated here
   page := `

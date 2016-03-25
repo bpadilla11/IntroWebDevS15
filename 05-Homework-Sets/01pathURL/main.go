@@ -11,9 +11,9 @@ import (
 	"net/http"
 )
 
-// prints the URL path to a browser
+// function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "<h1>URL: " + req.URL.Path + "</h1>")
+	io.WriteString(res, "<h1>URL: " + req.URL.Path + "</h1>") // prints the URL path to a browser
 }
 
 func main() {

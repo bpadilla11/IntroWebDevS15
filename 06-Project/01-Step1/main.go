@@ -5,19 +5,22 @@
 
 package main
 
-import(
+import (
   "fmt"
-	"log"
 	"html/template"
+	"log"
 	"net/http"
 )
 
+// webpage function
+// holds all the code for running the website
 func projectWebpage(res http.ResponseWriter, req *http.Request) {
-	tpl, err := template.ParseFiles("index.html")
-	if err != nil{
-		log.Fatalln(err)
+  // establish the webpage by parsing the index file
+  tpl, err := template.ParseFiles("index.html")
+  if err != nil { // if index.html does not exist, give user a error
+		log.Fatalln(err) // stops program if file does not exist
 	}
-	tpl.Execute(res, nil)
+	tpl.Execute(res, nil) // execute the html file
 }
 
 func main() {

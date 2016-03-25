@@ -14,6 +14,7 @@ import (
  	"strconv"
 )
 
+// function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
   // no favicon requests
   if req.URL.Path != "/" {

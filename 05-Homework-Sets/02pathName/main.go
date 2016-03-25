@@ -13,6 +13,7 @@ import (
 	"strings"
 )
 
+// function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 	name := strings.Split(req.URL.Path, "/")
 	nameOutput := strings.Join(name, "/")
