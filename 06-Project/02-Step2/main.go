@@ -1,5 +1,5 @@
 /* Brian Padilla
- * 3/14/16
+ * 3/25/16
  * PROJECT STEP 2 - have the application write a cookie called "session-fino" with a UUID.
  * The cookie should serve HttpOnly and you should have the "Secure" flag set also though
  * comment the "Secure" flag out as we're not using https.

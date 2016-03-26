@@ -1,5 +1,5 @@
 /* Brian Padilla
- * 3/14/16
+ * 3/25/16
  * PROJECT STEP 3 - continuing to build our application, create a template which is a form.
  * The form should gather the user's name and age. Store the user's name and age in the cookie.
  */

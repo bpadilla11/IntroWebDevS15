@@ -1,5 +1,5 @@
 /* Brian Padilla
- * 3/14/16
+ * 3/25/16
  * PROJECT STEP 4 - refactoring our application, create a new data type called "user" which
  * has fields for the user's name and age. When you receive the user's name and age form submission,
  * create a variable of type "user" then put those values from the form submission into the fields
