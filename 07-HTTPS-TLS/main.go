@@ -1,7 +1,7 @@
 /* Brian Padilla
  * 3/25/16
  * Create a web page which serves at localhost over https using TLS
- * NOTE: If the web page states the site is "untrusted", "unsecure", or anything similar,just proceed forward.
+ * NOTE: If the browser states the site is "untrusted", "unsecure", or of similar nature, just proceed forward.
  * For more information see 'cert/README.txt'
  */
 
