@@ -6,7 +6,7 @@
  * for that variable. Marshal your variable of type "user" to JSON. Encode that JSON to base64.
  * Store that value in the cookie.
  */
-/*
+
 package main
 
 import (
@@ -17,11 +17,10 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"strings"
 )
 
 type User struct {
-	Name, Age string
+	UUID, Name, Age string
 }
 
 func projectWebpage(res http.ResponseWriter, req *http.Request) {
@@ -30,9 +29,14 @@ func projectWebpage(res http.ResponseWriter, req *http.Request) {
 
 	if err != nil { // if no cookie exists, then create one
 		id, _ := uuid.NewV4() // generate new id
+		userSess := User {
+      UUID: id.String(), // put 'uuid' in JSON
+    }
+		b, _ := json.Marshal(userSess) // marshal 'userSess' uuid into JSON.
+		encode := base64.StdEncoding.EncodeToString(b) // encode JSON to base64
 		cookie = &http.Cookie { // create new session
 			Name:	"session-fino", // set session name
-			Value: id.String(), // set session id
+			Value: encode, // set session id
 			// Secure: true, // for HTTPS use, we're not using this
 			HttpOnly:	true, // standard HTTP website
 		}
@@ -41,25 +45,17 @@ func projectWebpage(res http.ResponseWriter, req *http.Request) {
 	}
 
 	if req.Method == "POST" { // if a cookie has been generated and updated, then update the cookie
-		userName := req.FormValue("userName")
-		userAge := req.FormValue("userAge")
-		currUser := User {
-			Name: userName,
-			Age: userAge,
-		}
-		bs, err := json.Marshal(currUser)
-		if err != nil {
-			fmt.Println(err)
-		}
-		jsonB64 := base64.StdEncoding.EncodeToString(bs)
-
-		tempValue := strings.Split(cookie.Value," | ") // split the session id and newValue
-		cookie.Value = tempValue[0] + " | " + jsonB64 // keep current session id from tempValue, but update user name and age
-		tempValue = nil // not necessary, but thought the tempValue array should be cleared of the id
-		http.SetCookie(res, cookie) // set the updated cookie
+    decode, _ := base64.StdEncoding.DecodeString(cookie.Value) // recover the json
+    var userValues User // for keeping the unmarshalled json
+    json.Unmarshal(decode, &userValues) // unmarshal the json
+    userValues.Name = req.FormValue("userName") // get userName input
+    userValues.Age = req.FormValue("userAge") // get userAge input
+    b, _ := json.Marshal(userValues) // convert back to json
+    encode := base64.StdEncoding.EncodeToString(b) // encode the json to base64
+    cookie.Value = encode // update new values in the cookie
+		http.SetCookie(res, cookie) // set the updated cookie with same uuid, but different name and age
 		fmt.Println("Updated cookie!") // debug message for updated cookie
 	}
-
 
 	// establish the webpage by parsing the index file
 	tpl, err := template.ParseFiles("index.html")
@@ -77,4 +73,3 @@ func main() {
 	fmt.Println("server is now running...") // display when server is running
 	http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
 }
-*/
