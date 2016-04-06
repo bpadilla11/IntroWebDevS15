@@ -33,7 +33,7 @@ func projectWebpage(res http.ResponseWriter, req *http.Request) {
 
 	// establish the webpage by parsing the index file
 	tpl, err := template.ParseFiles("index.html")
-  if err != nil { // if index.html does not exist, give user a error
+	if err != nil { // if index.html does not exist, give user a error
 		log.Fatalln(err) // stops program if file does not exist
 	}
 
