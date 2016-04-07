@@ -8,16 +8,16 @@
 package main
 
 import (
-  "fmt"
-  "github.com/nu7hatch/gouuid"
-  "html/template"
-  "log"
-  "net/http"
+	"fmt"
+	"github.com/nu7hatch/gouuid"
+	"html/template"
+	"log"
+	"net/http"
 )
 
 // function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
-  // load cookie if it exists
+	// load cookie if it exists
 	cookie, err := req.Cookie("session")
 	if err != nil { // if no cookie exists, then create one
 		id, _ := uuid.NewV4() // generate new id

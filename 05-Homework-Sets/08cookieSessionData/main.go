@@ -8,15 +8,15 @@
 package main
 
 import (
-  "crypto/hmac"
-  "crypto/sha256"
-  "fmt"
-  "github.com/nu7hatch/gouuid"
-  "html/template"
-  "io"
-  "log"
-  "net/http"
-  "strings"
+	"crypto/hmac"
+	"crypto/sha256"
+	"fmt"
+	"github.com/nu7hatch/gouuid"
+	"html/template"
+	"io"
+	"log"
+	"net/http"
+	"strings"
 )
 
 // function that encrypts input data using a SHA256 encryption
@@ -28,7 +28,7 @@ func getData(data string) string {
 
 // function that handles the website's back end
 func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
-  // load cookie if it exists
+	// load cookie if it exists
 	cookie, err := req.Cookie("session")
 	if err != nil { // if no cookie exists, then create one
 		id, _ := uuid.NewV4() // generate new id
@@ -42,9 +42,9 @@ func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 		fmt.Println("Created cookie!") // debug message for created cookie
 	}
 
-  if req.Method == "POST" { // if a cookie exists and user submits data, then update cookie
+	if req.Method == "POST" { // if a cookie exists and user submits data, then update cookie
 		newValue := req.FormValue("cookieType") // get user name and age from the index.html file
-    userCookie := getData(newValue) // encrypt the user input
+		userCookie := getData(newValue) // encrypt the user input
 		tempValue := strings.Split(cookie.Value," | ") // split the session id and newValue
 		cookie.Value = tempValue[0] + " | " + userCookie // keep current session id from tempValue, but update user input
 		tempValue = nil // not necessary, but thought the tempValue array should be cleared of the id
@@ -52,18 +52,18 @@ func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 		fmt.Println("Updated cookie!") // debug message for updated cookie
 	}
 
-  tpl, err := template.ParseFiles("index.html")
-  if err != nil { // if index.html does not exist, give user a error
-    log.Fatalln(err) // stops program if file does not exist
-  }
+	tpl, err := template.ParseFiles("index.html")
+	if err != nil { // if index.html does not exist, give user a error
+		log.Fatalln(err) // stops program if file does not exist
+	}
 
-  tpl.Execute(res, nil) // execute the html file
+	tpl.Execute(res, nil) // execute the html file
 }
 
 func main() {
-  // set the path URL
-  http.HandleFunc("/", thisLittleWebpage)
+	// set the path URL
+	http.HandleFunc("/", thisLittleWebpage)
 
-  fmt.Println("server is now running...") // display when server is running
-  http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
+	fmt.Println("server is now running...") // display when server is running
+	http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
 }
