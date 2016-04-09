@@ -6,7 +6,7 @@
 package main
 
 import (
-  "fmt"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"

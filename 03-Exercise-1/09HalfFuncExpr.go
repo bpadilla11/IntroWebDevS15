@@ -11,5 +11,5 @@ func main() {
 		return n/2, n%2 == 0 // Takes an integer and returns the number divided by two and a bool if it's even or odd
 	}
 	fmt.Println(half(1)) // Input and output first result
-  fmt.Println(half(2)) // Input and output second result
+	fmt.Println(half(2)) // Input and output second result
 }

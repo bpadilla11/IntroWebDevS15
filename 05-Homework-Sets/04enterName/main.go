@@ -20,16 +20,16 @@ func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 	page := `
 		<!DOCTYPE html>
 		<html>
-		  <head>
-		    <meta charset="utf-8">
-		    <title></title>
-		  </head>
-		  <body>
-		    <form method="GET"> Input your name:
-		      <input type="text" name="name">
-		      <input type="submit">
-		    </form>
-		  </body>
+			<head>
+				<meta charset="utf-8">
+				<title></title>
+			</head>
+			<body>
+				<form method="GET"> Input your name:
+					<input type="text" name="name">
+					<input type="submit">
+				</form>
+			</body>
 		</html>`
 
 	io.WriteString(res, page + name) // write the page

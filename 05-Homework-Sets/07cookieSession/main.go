@@ -31,18 +31,18 @@ func thisLittleWebpage(res http.ResponseWriter, req *http.Request) {
 		fmt.Println("Created cookie!") // debug message for created cookie
 	}
 
-  tpl, err := template.ParseFiles("index.html")
-  if err != nil { // if index.html does not exist, give user a error
-    log.Fatalln(err) // stops program if file does not exist
-  }
+	tpl, err := template.ParseFiles("index.html")
+	if err != nil { // if index.html does not exist, give user a error
+		log.Fatalln(err) // stops program if file does not exist
+	}
 
-  tpl.Execute(res, nil) // execute the html file
+	tpl.Execute(res, nil) // execute the html file
 }
 
 func main() {
-  // set the path URL
-  http.HandleFunc("/", thisLittleWebpage)
+	// set the path URL
+	http.HandleFunc("/", thisLittleWebpage)
 
-  fmt.Println("server is now running...") // display when server is running
-  http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
+	fmt.Println("server is now running...") // display when server is running
+	http.ListenAndServe(":8080", nil) // set listener to port 8080 on localhost
 }

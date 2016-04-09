@@ -13,8 +13,8 @@ func half(n int) (int, bool) {
 }
 
 func main() {
-  a, odd := half(1) // Declare first test: a takes the input
-  b, even := half(2) // Declare second test: b takes the input
+	a, odd := half(1) // Declare first test: a takes the input
+	b, even := half(2) // Declare second test: b takes the input
 	fmt.Println(a, odd) // Output first test
-  fmt.Println(b, even) // Output second test
+	fmt.Println(b, even) // Output second test
 }

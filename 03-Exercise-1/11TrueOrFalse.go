@@ -7,6 +7,6 @@ package main
 import "fmt"
 
 func main() {
-  whatIsValue := (true && false) || (false && true) || !(false && false)
+	whatIsValue := (true && false) || (false && true) || !(false && false)
 	fmt.Println(whatIsValue) // Outputs 'true'
 }
