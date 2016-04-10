@@ -5,12 +5,12 @@
  * Show a log-out button only when the user is logged in.
  */
 
- package main
+package main
 
- import (
-   
- )
+import (
 
- func main() {
+)
 
- }
+func main() {
+
+}

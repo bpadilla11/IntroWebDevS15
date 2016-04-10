@@ -4,12 +4,12 @@
  * data when they are not logged in.
  */
 
- package main
+package main
 
- import (
-   
- )
+import (
 
- func main() {
+)
 
- }
+func main() {
+
+}
